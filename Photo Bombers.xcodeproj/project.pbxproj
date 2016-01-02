@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8966BA841C3893FE00746CD4 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8966BA831C3893FE00746CD4 /* PhotoCell.m */; settings = {ASSET_TAGS = (); }; };
 		B33C30CA1897F89B00E29FB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30C91897F89B00E29FB2 /* Foundation.framework */; };
 		B33C30CC1897F89B00E29FB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CB1897F89B00E29FB2 /* CoreGraphics.framework */; };
 		B33C30CE1897F89B00E29FB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CD1897F89B00E29FB2 /* UIKit.framework */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8966BA821C3893FE00746CD4 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		8966BA831C3893FE00746CD4 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		B33C30C61897F89B00E29FB2 /* Photo Bombers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Bombers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C30C91897F89B00E29FB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B33C30CB1897F89B00E29FB2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -116,6 +119,8 @@
 				B33C30D01897F89B00E29FB2 /* Supporting Files */,
 				B33C30F81897F90500E29FB2 /* PhotosViewController.h */,
 				B33C30F91897F90500E29FB2 /* PhotosViewController.m */,
+				8966BA821C3893FE00746CD4 /* PhotoCell.h */,
+				8966BA831C3893FE00746CD4 /* PhotoCell.m */,
 			);
 			path = "Photo Bombers";
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8966BA841C3893FE00746CD4 /* PhotoCell.m in Sources */,
 				B33C30DA1897F89B00E29FB2 /* AppDelegate.m in Sources */,
 				B33C30FA1897F90500E29FB2 /* PhotosViewController.m in Sources */,
 				B33C30D61897F89B00E29FB2 /* main.m in Sources */,
