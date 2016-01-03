@@ -31,6 +31,16 @@
     
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"photo"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURL *url = [[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"Response: %@", text);
+    }];
+    [task resume];
 }
 
 
