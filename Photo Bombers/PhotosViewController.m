@@ -54,8 +54,12 @@
         NSURL *url = [[NSURL alloc] initWithString:urlString];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-            NSLog(@"Text: %@", text);
+            
+            NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            
+            NSArray *photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
+            NSLog(@"Photos: %@", photos);
         }];
         [task resume];
     }
