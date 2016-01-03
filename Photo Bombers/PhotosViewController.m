@@ -49,7 +49,15 @@
             [userDefaults synchronize];
         }];
     } else {
-        NSLog(@"Signed in!");
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/users/self/media/recent/?access_token=%@", self.accessToken];
+        NSURL *url = [[NSURL alloc] initWithString:urlString];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+            NSLog(@"Text: %@", text);
+        }];
+        [task resume];
     }
 }
 
