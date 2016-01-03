@@ -14,6 +14,7 @@
 @interface PhotosViewController ()
 
 @property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSArray *photos;
 
 @end
 
@@ -49,32 +50,42 @@
             [userDefaults synchronize];
         }];
     } else {
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/users/self/media/recent/?access_token=%@", self.accessToken];
-        NSURL *url = [[NSURL alloc] initWithString:urlString];
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            
-            NSData *data = [[NSData alloc] initWithContentsOfURL:location];
-            NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            
-            NSArray *photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
-            NSLog(@"Photos: %@", photos);
-        }];
-        [task resume];
+        [self refresh];
     }
+}
+
+#pragma mark - Helper methods
+
+- (void)refresh {
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/users/self/media/recent/?access_token=%@", self.accessToken];
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
+        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        
+        self.photos = [responseDictionary valueForKeyPath:@"data"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    }];
+    [task resume];
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return [self.photos count];
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
+    PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
     
     cell.backgroundColor = [UIColor lightGrayColor];
+    cell.photo = self.photos[indexPath.row];
     
     return cell;
 }
