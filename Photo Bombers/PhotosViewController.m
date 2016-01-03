@@ -13,6 +13,8 @@
 
 @interface PhotosViewController ()
 
+@property (nonatomic) NSString *accessToken;
+
 @end
 
 @implementation PhotosViewController
@@ -34,9 +36,21 @@
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"photo"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {
-        NSLog(@"Response: %@", responseObject);
-    }];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults objectForKey:@"accessToken"];
+    
+    if (self.accessToken == nil) {
+    
+        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
+        
+            NSString *accessToken = responseObject[@"credentials"][@"token"];
+
+            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            [userDefaults synchronize];
+        }];
+    } else {
+        NSLog(@"Signed in!");
+    }
 }
 
 
