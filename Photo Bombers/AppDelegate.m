@@ -9,10 +9,23 @@
 #import "AppDelegate.h"
 #import "PhotosViewController.h"
 
+#import <SimpleAuth/SimpleAuth.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Using plist to hide keys from github public repo
+    // http://stackoverflow.com/a/12250837
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"instakeys" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    SimpleAuth.configuration[@"instagram"] = @{
+                                               @"client_id" : dict[@"clientId"],
+                                               SimpleAuthRedirectURIKey : @"photobombers://auth/instagram"
+                                               };
+    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {}];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     PhotosViewController *photosViewController = [[PhotosViewController alloc] init];
