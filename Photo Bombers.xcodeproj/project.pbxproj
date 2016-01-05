@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8966BA841C3893FE00746CD4 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8966BA831C3893FE00746CD4 /* PhotoCell.m */; settings = {ASSET_TAGS = (); }; };
-		8966BA871C38C57100746CD4 /* instakeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8966BA861C38C57100746CD4 /* instakeys.plist */; settings = {ASSET_TAGS = (); }; };
+		8966BA841C3893FE00746CD4 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8966BA831C3893FE00746CD4 /* PhotoCell.m */; };
+		8966BA871C38C57100746CD4 /* instakeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8966BA861C38C57100746CD4 /* instakeys.plist */; };
+		89FA360E1C3B753900FAAA04 /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FA360D1C3B753900FAAA04 /* PhotoController.m */; };
 		B33C30CA1897F89B00E29FB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30C91897F89B00E29FB2 /* Foundation.framework */; };
 		B33C30CC1897F89B00E29FB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CB1897F89B00E29FB2 /* CoreGraphics.framework */; };
 		B33C30CE1897F89B00E29FB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CD1897F89B00E29FB2 /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 		8966BA831C3893FE00746CD4 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		8966BA851C38A40400746CD4 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		8966BA861C38C57100746CD4 /* instakeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = instakeys.plist; sourceTree = "<group>"; };
+		89FA360C1C3B753900FAAA04 /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
+		89FA360D1C3B753900FAAA04 /* PhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoController.m; sourceTree = "<group>"; };
 		A7D4ABBFC31322E1AF181047 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B33C30C61897F89B00E29FB2 /* Photo Bombers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Bombers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C30C91897F89B00E29FB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				8966BA821C3893FE00746CD4 /* PhotoCell.h */,
 				8966BA831C3893FE00746CD4 /* PhotoCell.m */,
 				8966BA851C38A40400746CD4 /* Podfile */,
+				89FA360C1C3B753900FAAA04 /* PhotoController.h */,
+				89FA360D1C3B753900FAAA04 /* PhotoController.m */,
 			);
 			path = "Photo Bombers";
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				B33C30DA1897F89B00E29FB2 /* AppDelegate.m in Sources */,
 				B33C30FA1897F90500E29FB2 /* PhotosViewController.m in Sources */,
 				B33C30D61897F89B00E29FB2 /* main.m in Sources */,
+				89FA360E1C3B753900FAAA04 /* PhotoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
