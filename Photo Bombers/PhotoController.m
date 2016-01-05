@@ -12,6 +12,10 @@
 @implementation PhotoController
 
 + (void)imageForPhoto:(NSDictionary *)photo size:(NSString *)size completion:(void(^)(UIImage *image))completion {
+    if (photo == nil || size == nil || completion == nil) {
+        return;
+    }
+    
     NSString *key = [[NSString alloc] initWithFormat:@"%@-%@", photo[@"id"], size];
     UIImage *image = [[SAMCache sharedCache] imageForKey:key];
     if (image) {
