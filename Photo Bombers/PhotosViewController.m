@@ -42,12 +42,14 @@
     
     if (self.accessToken == nil) {
     
-        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
-        
-            NSString *accessToken = responseObject[@"credentials"][@"token"];
+        [SimpleAuth authorize:@"instagram" options:@{@"scope": @[@"likes"]} completion:^(NSDictionary *responseObject, NSError *error) {
+            
+            self.accessToken = responseObject[@"credentials"][@"token"];
 
-            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
+            
+            [self refresh];
         }];
     } else {
         [self refresh];
