@@ -24,9 +24,6 @@
                                                @"client_id" : dict[@"clientId"],
                                                SimpleAuthRedirectURIKey : @"photobombers://auth/instagram"
                                                };
-
-// I think this next line makes it pop up twice
-//    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {}];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

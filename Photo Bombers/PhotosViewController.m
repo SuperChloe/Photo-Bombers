@@ -9,10 +9,11 @@
 #import "PhotosViewController.h"
 #import "PhotoCell.h"
 #import "DetailViewController.h"
+#import "PresentDetailTransition.h"
 
 #import <SimpleAuth/SimpleAuth.h>
 
-@interface PhotosViewController () <UICollectionViewDelegateFlowLayout>
+@interface PhotosViewController () <UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic) NSString *accessToken;
 @property (nonatomic) NSArray *photos;
@@ -93,6 +94,8 @@
    
 }
 
+#pragma mark - collectionView methods
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.photos count];
 }
@@ -111,10 +114,21 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *photo = self.photos[indexPath.row];
     DetailViewController *viewController = [[DetailViewController alloc] init];
+    viewController.modalPresentationStyle = UIModalPresentationCustom;
+    viewController.transitioningDelegate = self;
     viewController.photo = photo;
     
     [self presentViewController:viewController animated:YES completion:nil];
     
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    return [[PresentDetailTransition alloc] init];
 }
 
 
