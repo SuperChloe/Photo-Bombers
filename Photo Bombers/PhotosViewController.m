@@ -12,16 +12,21 @@
 
 #import <SimpleAuth/SimpleAuth.h>
 
-@interface PhotosViewController ()
+@interface PhotosViewController () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic) NSString *accessToken;
 @property (nonatomic) NSArray *photos;
+
 
 @end
 
 @implementation PhotosViewController
 
+
+
+
 - (instancetype)init {
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(106.0, 106.0);
     layout.minimumInteritemSpacing = 1.0;
@@ -78,10 +83,20 @@
     [task resume];
 }
 
+#pragma mark – UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)layout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake((collectionView.frame.size.width-3)/3, (collectionView.frame.size.width-3)/3);
+   
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.photos count];
 }
+
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,6 +116,8 @@
     [self presentViewController:viewController animated:YES completion:nil];
     
 }
+
+
 
 @end
 

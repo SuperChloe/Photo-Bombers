@@ -40,10 +40,7 @@
 }
 
 
-- (void)like:(id)sender {
-    
-    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
-    if ( longPress.state == UIGestureRecognizerStateEnded) {
+- (void)like {
         
     NSLog(@"Link: %@", self.photo[@"link"]);
     
@@ -62,7 +59,6 @@
     }];
     [task resume];
     }
-}
 
 
 - (void)showLikeCompletion {
