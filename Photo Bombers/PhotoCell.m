@@ -40,7 +40,11 @@
 }
 
 
-- (void)like {
+- (void)like:(id)sender {
+    
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+    if ( longPress.state == UIGestureRecognizerStateEnded) {
+        
     NSLog(@"Link: %@", self.photo[@"link"]);
     
     NSURLSession *session = [NSURLSession sharedSession];
@@ -57,6 +61,7 @@
         });
     }];
     [task resume];
+    }
 }
 
 

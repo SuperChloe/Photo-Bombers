@@ -26,6 +26,7 @@
                                                };
     [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {}];
     
+    NSLog(@"%@", [[UIScreen mainScreen] bounds]);
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     PhotosViewController *photosViewController = [[PhotosViewController alloc] init];
