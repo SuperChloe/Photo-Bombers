@@ -29,6 +29,13 @@
         self.imageView.image = image;
     }];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
+    [self.view addGestureRecognizer:tap];
+    
+}
+
+- (void)close {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
