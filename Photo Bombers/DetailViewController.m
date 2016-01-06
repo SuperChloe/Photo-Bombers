@@ -35,13 +35,22 @@
     
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
     UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.imageView snapToPoint:self.view.center];
     [self.animator addBehavior:snap];
-    
 }
 
 
 - (void)close {
+    [self.animator removeAllBehaviors];
+    
+    UISnapBehavior *snap = [[UISnapBehavior alloc] initWithItem:self.imageView snapToPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) + 180.0f)];
+    [self.animator addBehavior:snap];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
