@@ -13,6 +13,7 @@
 		89FA36111C3B77FE00FAAA04 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FA36101C3B77FE00FAAA04 /* DetailViewController.m */; };
 		89FA36131C3B853E00FAAA04 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89FA36121C3B853E00FAAA04 /* Launch Screen.storyboard */; };
 		89FA36161C3C834D00FAAA04 /* PresentDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FA36151C3C834D00FAAA04 /* PresentDetailTransition.m */; };
+		89FA36191C3C909400FAAA04 /* DismissDetailTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FA36181C3C909400FAAA04 /* DismissDetailTransition.m */; };
 		B33C30CA1897F89B00E29FB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30C91897F89B00E29FB2 /* Foundation.framework */; };
 		B33C30CC1897F89B00E29FB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CB1897F89B00E29FB2 /* CoreGraphics.framework */; };
 		B33C30CE1897F89B00E29FB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C30CD1897F89B00E29FB2 /* UIKit.framework */; };
@@ -53,6 +54,8 @@
 		89FA36121C3B853E00FAAA04 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		89FA36141C3C834D00FAAA04 /* PresentDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentDetailTransition.h; sourceTree = "<group>"; };
 		89FA36151C3C834D00FAAA04 /* PresentDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentDetailTransition.m; sourceTree = "<group>"; };
+		89FA36171C3C909400FAAA04 /* DismissDetailTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DismissDetailTransition.h; sourceTree = "<group>"; };
+		89FA36181C3C909400FAAA04 /* DismissDetailTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DismissDetailTransition.m; sourceTree = "<group>"; };
 		A7D4ABBFC31322E1AF181047 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B33C30C61897F89B00E29FB2 /* Photo Bombers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Bombers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33C30C91897F89B00E29FB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,6 +153,8 @@
 				89FA36101C3B77FE00FAAA04 /* DetailViewController.m */,
 				89FA36141C3C834D00FAAA04 /* PresentDetailTransition.h */,
 				89FA36151C3C834D00FAAA04 /* PresentDetailTransition.m */,
+				89FA36171C3C909400FAAA04 /* DismissDetailTransition.h */,
+				89FA36181C3C909400FAAA04 /* DismissDetailTransition.m */,
 			);
 			path = "Photo Bombers";
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 				B33C30D61897F89B00E29FB2 /* main.m in Sources */,
 				89FA36161C3C834D00FAAA04 /* PresentDetailTransition.m in Sources */,
 				89FA360E1C3B753900FAAA04 /* PhotoController.m in Sources */,
+				89FA36191C3C909400FAAA04 /* DismissDetailTransition.m in Sources */,
 				89FA36111C3B77FE00FAAA04 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

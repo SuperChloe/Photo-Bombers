@@ -10,6 +10,7 @@
 #import "PhotoCell.h"
 #import "DetailViewController.h"
 #import "PresentDetailTransition.h"
+#import "DismissDetailTransition.h"
 
 #import <SimpleAuth/SimpleAuth.h>
 
@@ -129,6 +130,10 @@
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source {
     return [[PresentDetailTransition alloc] init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [[DismissDetailTransition alloc] init];
 }
 
 
