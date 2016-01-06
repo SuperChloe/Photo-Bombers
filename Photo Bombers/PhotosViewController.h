@@ -10,6 +10,10 @@
 
 @interface PhotosViewController : UICollectionViewController
 
+@property (nonatomic) NSArray *photos;
+
+- (void)detail:(UITapGestureRecognizer *)gestureRecognizer;
+
 
 
 @end

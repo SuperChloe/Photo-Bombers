@@ -17,7 +17,7 @@
 @interface PhotosViewController () <UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate>
 
 @property (nonatomic) NSString *accessToken;
-@property (nonatomic) NSArray *photos;
+
 
 
 @end
@@ -44,6 +44,7 @@
     
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"photo"];
     self.collectionView.backgroundColor = [UIColor whiteColor];
+
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.accessToken = [userDefaults objectForKey:@"accessToken"];
@@ -85,6 +86,9 @@
     [task resume];
 }
 
+
+
+
 #pragma mark – UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -109,19 +113,37 @@
     cell.backgroundColor = [UIColor lightGrayColor];
     cell.photo = self.photos[indexPath.row];
     
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(detail:)];
+    [singleTap setNumberOfTapsRequired:1];
+    [singleTap setNumberOfTouchesRequired:1];
+    [singleTap requireGestureRecognizerToFail:cell.doubleTap];
+    
+    [cell addGestureRecognizer:singleTap];
+    
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *photo = self.photos[indexPath.row];
+- (void)detail:(UITapGestureRecognizer *)gestureRecognizer {
+    PhotoCell *cell = (PhotoCell *)gestureRecognizer.view;
+    NSDictionary *photo = cell.photo;
     DetailViewController *viewController = [[DetailViewController alloc] init];
     viewController.modalPresentationStyle = UIModalPresentationCustom;
     viewController.transitioningDelegate = self;
     viewController.photo = photo;
     
     [self presentViewController:viewController animated:YES completion:nil];
-    
 }
+//
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSDictionary *photo = self.photos[indexPath.row];
+//    DetailViewController *viewController = [[DetailViewController alloc] init];
+//    viewController.modalPresentationStyle = UIModalPresentationCustom;
+//    viewController.transitioningDelegate = self;
+//    viewController.photo = photo;
+//    
+//    [self presentViewController:viewController animated:YES completion:nil];
+//    
+//}
 
 #pragma mark - UIViewControllerTransitioningDelegate
 

@@ -8,6 +8,7 @@
 
 #import "PhotoCell.h"
 #import "PhotoController.h"
+#import "DetailViewController.h"
 
 @implementation PhotoCell
 
@@ -24,9 +25,9 @@
     if (self) {
         self.imageView = [[UIImageView alloc] init];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(like)];
-        tap.numberOfTapsRequired = 2;
-        [self addGestureRecognizer:tap];
+        self.doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(like)];
+        self.doubleTap.numberOfTapsRequired = 2;
+        [self addGestureRecognizer:self.doubleTap];
         
         [self.contentView addSubview:self.imageView];
     }
@@ -38,6 +39,7 @@
     
     self.imageView.frame = self.contentView.bounds;
 }
+
 
 
 - (void)like {
@@ -58,7 +60,8 @@
         });
     }];
     [task resume];
-    }
+}
+
 
 
 - (void)showLikeCompletion {
